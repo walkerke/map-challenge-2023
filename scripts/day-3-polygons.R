@@ -19,11 +19,11 @@ state <- states(cb = TRUE, year = 2020) %>%
 zip_state <- st_intersection(zips, state)
 
 zip_polys <- zip_state %>%
-  filter(as.numeric(st_area(.)) > 1000000) # At least 1 square km of overlap, avoiding misalignment / sliver issues
+  filter(as.numeric(st_area(.)) > 10000000) # At least 1 square km of overlap, avoiding misalignment / sliver issues
 
 multi_zips <- zip_polys %>%
   group_by(zip) %>%
-  filter(n() > 1) %>%
+  filter(n() > 2) %>%
   summarize() %>%
   shift_geometry()
 
