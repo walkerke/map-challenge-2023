@@ -12,8 +12,6 @@ us_tract_income <- get_acs(
 
 Sys.setenv("MAPBOX_ACCESS_TOKEN" = "YOUR TOKEN HERE")
 
-rdeck(map_style = mapbox_light(), initial_bounds = us_tract_income)
-
 us_tract_income$height <- ifelse(is.na(us_tract_income$estimate), 0, us_tract_income$estimate)
 
 us_tract_income <- st_transform(us_tract_income, 4326)
